@@ -1,67 +1,108 @@
+//By Douxx.xyz
+//Github: https://github.com/douxxu/DouServer/
+//Website: https://douxx.xyz
+//Discord: douxx.xyz
+
+
+
 const express = require('express');
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const yargs = require('yargs');
-require('colors'); 
+require('colors');
 
 const app = express();
 
-const logStream = fs.createWriteStream(path.join(__dirname, 'server.log'), { flags: 'a' });
-app.use(morgan(':date[en-CH] - :remote-addr - :method :url :status :response-time ms', { stream: logStream }));
+const logs = fs.createWriteStream(path.join(__dirname, 'server.log'), { flags: 'a' });
+app.use(morgan(':date[en-CH] - :remote-addr - :method :url :status :response-time ms', { stream: logs }));
 
-let customIndexFilePath;
 
-const requestLogs = {};
-const requestCounter = {};
-const redirectionThreshold = 3;
-const redirectionUrl = 'https://www.google.com';
-const blockedIps = yargs.argv.bl || [];
+let cifp;
+let pdir = path.join(__dirname, 'public');
+let pages = [];
+
+fs.readdirSync(pdir).forEach(file => {
+  const ppath = path.join(pdir, file);
+  if (fs.statSync(ppath).isDirectory()) {
+    const ifile = fs.readdirSync(ppath).find(filename => filename.toLowerCase().startsWith('index'));
+    if (ifile) {
+      const pname = path.basename(file);
+      pages.push({
+        name: pname,
+        path: ppath,
+        indexFile: ifile,
+      });
+    }
+  }
+});
+
+const rlogs = {};
+const rcount = {};
+const rlimit = 10;
+const gle = 'https://www.google.com';
+const blip = yargs.argv.bl || [];
+const rtxt = path.join(__dirname, 'public', 'robots.txt');
+
+
+
+app.get('/robots.txt', (req, res) => {
+  res.sendFile(rtxt);
+});
 
 app.use((req, res, next) => {
   req.timestamp = new Date();
   req.clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   req.userAgent = req.get('User-Agent');
+  const timest = req.timestamp.toLocaleString('en-CH', { timeZone: 'Europe/Zurich' });
 
-  if (blockedIps.includes(req.clientIp)) {
-    // Enregistrer la tentative de connexion d'une personne figurant sur la liste noire
-    console.log(`[SERVER] [${req.timestamp.toLocaleString('en-CH', { timeZone: 'Europe/Zurich' })}] - BLACKLISTED IP ${req.clientIp} tried to connect.`.red);
-    return res.redirect(redirectionUrl);
+  if (blip.includes(req.clientIp)) {
+
+    console.log(`[SERVER] [${timest}] - BLACKLISTED IP ${req.clientIp} tried to connect.`.red);
+    return res.status(403).end();
   }
 
-  if (!requestLogs[req.clientIp]) {
-    requestLogs[req.clientIp] = {
+  if (!rlogs[req.clientIp]) {
+    rlogs[req.clientIp] = {
       count: 0,
       lastLog: '',
     };
   }
 
-  requestLogs[req.clientIp].lastLog = `[${req.timestamp.toLocaleString('en-CH', { timeZone: 'Europe/Zurich' })}] - ${req.clientIp}`;
-  requestLogs[req.clientIp].count++;
+  rlogs[req.clientIp].lastLog = `[${timest}] - ${req.clientIp}`;
+  rlogs[req.clientIp].count++;
+  
+  if (yargs.argv.r && req.path === '/robots.txt') {
+    return res.status(404).end(); 
+  }
 
   if (yargs.argv.s) {
-    if (!requestCounter[req.clientIp]) {
-      requestCounter[req.clientIp] = {
+    if (!rcount[req.clientIp]) {
+        rcount[req.clientIp] = {
         count: 0,
         windowStart: new Date(),
       };
     }
 
-    const currentTime = new Date();
-    const windowDuration = currentTime - requestCounter[req.clientIp].windowStart;
+    const time = new Date();
+    const wdur = time - rcount[req.clientIp].windowStart;
 
-    if (windowDuration < 5000) {
-      requestCounter[req.clientIp].count++;
+    if (wdur < 5000) {
+        rcount[req.clientIp].count++;
 
-      if (requestCounter[req.clientIp].count > redirectionThreshold) {
-        console.log(`[SERVER] [${req.timestamp.toLocaleString('en-CH', { timeZone: 'Europe/Zurich' })}] - ${req.clientIp} exceeded redirection threshold (${redirectionThreshold}).`.yellow);
-        return res.redirect(redirectionUrl);
+      if (rcount[req.clientIp].count > rlimit) {
+        console.log(`[SERVER] [${timest}] - ${req.clientIp} exceeded redirection threshold (${rlimit}).`.yellow);
+
+        blip.push(req.clientIp);
+        console.log(`[SERVER] [${timest}] - ${req.clientIp} added to blacklist.`.red);
+
+        return res.redirect(gle);
       }
     } else {
-      requestCounter[req.clientIp] = {
+        rcount[req.clientIp] = {
         count: 1,
-        windowStart: currentTime,
+        windowStart: time,
       };
     }
   }
@@ -70,15 +111,26 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  const lastLog = requestLogs[req.clientIp] || { count: 0, lastLog: '' };
+  const lastLog = rlogs[req.clientIp] || { count: 0, lastLog: '' };
+  const timest = req.timestamp.toLocaleString('en-CH', { timeZone: 'Europe/Zurich' });
 
-  console.log(`[SERVER] [${req.timestamp.toLocaleString('en-CH', { timeZone: 'Europe/Zurich' })}] - ${req.clientIp} - ${lastLog.count}`.green);
+  console.log(`[SERVER] [${timest}] - ${req.clientIp} - ${lastLog.count}`.green);
 
-  if (customIndexFilePath) {
-    res.sendFile(customIndexFilePath);
+  if (cifp) {
+    res.sendFile(cifp);
   } else {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   }
+});
+
+pages.forEach(page => {
+  app.get(`/${page.name}`, (req, res) => {
+    const lastLog = rlogs[req.clientIp] || { count: 0, lastLog: '' };
+    const timest = req.timestamp.toLocaleString('en-CH', { timeZone: 'Europe/Zurich' });
+
+    console.log(`[SERVER] [${timest}] - ${req.clientIp} - ${lastLog.count}`.green);
+    res.sendFile(path.join(page.path, page.indexFile));
+  });
 });
 
 const argv = yargs
@@ -97,16 +149,23 @@ const argv = yargs
     describe: 'List of IP addresses to block',
     type: 'array'
   })
-  .option('start', {
+  .option('st', {
+    alias: 'start',
     describe: 'Start the server automatically after a specified time',
     type: 'number'
   })
-  .option('index', {
-    describe: 'Specify the index HTML file',
+  .option('i', {
+    alias: 'index',
+    describe: 'Specify HTML index file',
     type: 'string'
   })
   .option('h', {
     describe: 'Show help',
+    type: 'boolean'
+  })
+  .option('r', {
+    alias: 'robots',
+    describe: 'don\'t allow robots to reach the website',
     type: 'boolean'
   })
   .argv;
@@ -118,25 +177,26 @@ if (argv.h) {
   console.log('| | | | | | | | | `--. \\  __||    /| | | |  __||    / '.cyan);
   console.log('| |/ /\\ \\_/ / |_| /\\__/ / |___| |\\ \\\\ \\_/ / |___| |\\ \\ '.cyan);
   console.log('|___/  \\___/ \\___/\\____/\\____/\\_| \\_\\___/\\____/\\_| \\_|'.cyan);
-  console.log('----------------------------------------------------------------'.gray);
-  console.log("| Server created by Douxx.xyz                                  |".gray);
-  console.log('----------------------------------------------------------------'.gray);
+  console.log('----------------------------------------------------------------'.rainbow);
+  console.log("| Server created by Douxx.xyz (https://github.com/douxxu/)     |".gray);
+  console.log('----------------------------------------------------------------'.rainbow);
   console.log("𝗔𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗼𝗽𝘁𝗶𝗼𝗻𝘀:".yellow);
   console.log("| -p, --port [port]: Specifies the server port".yellow);
   console.log("| -s, --shield: Activates Shield mode to limit requests".yellow);
   console.log("| -bl, --blacklist [ip1 ip2 ...] : List of IP addresses to be blocked".yellow);
-  console.log("| -start [minutes]: Automatically starts the server after a set time.".yellow);
-  console.log("| -index [path]: Specify HTML index file path".yellow);
+  console.log("| -st, --start [minutes]: Automatically starts the server after a set time.".yellow);
+  console.log("| -i, --index [path]: Specify HTML index file path".yellow);
+  console.log("| -r, --robots: Blocks robots if the option is present".yellow);
   console.log("| -h: Shows this help message\n".yellow);
   console.log("𝐄𝐱𝐚𝐦𝐩𝐥𝐞 𝐮𝐬𝐚𝐠𝐞:".gray);
   console.log('----------------------------------------------------------------'.gray);
-  console.log("| node server.js -p 3000 -s -bl 127.0.0.1 -start 1 -index ./public/index.html".yellow);
+  console.log("| node server.js -p 3000 -s -bl 127.0.0.1 -st 1 -i ./public/index.html -r".yellow);
   console.log('----------------------------------------------------------------'.gray);
   process.exit();
 } else {
-  if (argv.index) {
-    customIndexFilePath = argv.index;
-    console.log(`[SERVER] Using custom index file: ${customIndexFilePath}`.green);
+  if (argv.i) {
+    cifp = argv.i;
+    console.log(`[SERVER] Using custom index file: ${cifp}`.green);
   }
 
   if (argv.start) {
@@ -144,35 +204,35 @@ if (argv.h) {
     console.log(`[START] Server will start in ${countdownMinutes} minutes. Countdown begins...`.yellow);
 
     setTimeout(() => {
-      startServer();
+        launch();
     }, countdownMinutes * 60 * 1000);
   } else {
-    startServer();
+    launch();
   }
 }
 
-function startServer() {
+function launch() {
   const PORT = argv.p || 1111;
   const host = '0.0.0.0';
 
   app.listen(PORT, host, () => {
-    const serverIp = getServerIp();
+    const sip = getip();
     console.log('______ _____ _   _ _____ ___________ _   _ ___________ '.cyan);
     console.log('|  _  \\  _  | | | /  ___|  ___| ___ \\ | | |  ___| ___ \\'.cyan);
     console.log('| | | | | | | | | \\ `--.| |__ | |_/ / | | | |__ | |_/ /'.cyan);
     console.log('| | | | | | | | | `--. \\  __||    /| | | |  __||    / '.cyan);
     console.log('| |/ /\\ \\_/ / |_| /\\__/ / |___| |\\ \\\\ \\_/ / |___| |\\ \\ '.cyan);
     console.log('|___/  \\___/ \\___/\\____/\\____/\\_| \\_\\___/\\____/\\_| \\_|'.cyan);
-    console.log('----------------------------------------------------------------'.gray);
-    console.log("| Server created by Douxx.xyz                                  |".gray);
-    console.log('----------------------------------------------------------------'.gray);
-    console.log(`[SERVER] Server is running at http://${serverIp}:${PORT}`.green);
-    console.log(`[HELP] Use ctrl + c to stop the server`.yellow);
-    console.log("[HELP] Use 'node server.js -h' to show help".yellow);
+    console.log('----------------------------------------------------------------'.rainbow);
+    console.log("| Server created by Douxx.xyz (https://github.com/douxxu/)     |".gray);
+    console.log('----------------------------------------------------------------'.rainbow);
+    console.log(`[SERVER] Server is running at http://${sip}:${PORT}`.green);
+    console.error(`Use ctrl + c to stop the server`.yellow);
+    console.error(`Use 'node server.js -h' to get help`.yellow);
   });
 }
 
-function getServerIp() {
+function getip() {
   const networkInterfaces = os.networkInterfaces();
   for (const interfaceName in networkInterfaces) {
     const networkInterface = networkInterfaces[interfaceName];
@@ -184,3 +244,4 @@ function getServerIp() {
   }
   return 'localhost';
 }
+//2+2=7
