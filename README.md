@@ -25,3 +25,29 @@ This command will run a basic web server, the default port is 1111, and the defa
 
 You can use the differents arguments for editing the web server:
 ```
+______ _____ _   _ _____ ___________ _   _ ___________ 
+|  _  \  _  | | | /  ___|  ___| ___ \ | | |  ___| ___ \
+| | | | | | | | | \ `--.| |__ | |_/ / | | | |__ | |_/ /
+| | | | | | | | | `--. \  __||    /| | | |  __||    / 
+| |/ /\ \_/ / |_| /\__/ / |___| |\ \\ \_/ / |___| |\ \ 
+|___/  \___/ \___/\____/\____/\_| \_\___/\____/\_| \_|
+----------------------------------------------------------------
+| Server created by Douxx.xyz                                  |
+----------------------------------------------------------------
+𝗔𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗼𝗽𝘁𝗶𝗼𝗻𝘀:
+| -p, --port [port]: Specifies the server port
+| -s, --shield: Activates Shield mode to limit requests
+| -bl, --blacklist [ip1 ip2 ...] : List of IP addresses to be blocked
+| -start [minutes]: Automatically starts the server after a set time.
+| -index [path]: Specify HTML index file path
+| -h: Shows this help message
+
+𝐄𝐱𝐚𝐦𝐩𝐥𝐞 𝐮𝐬𝐚𝐠𝐞:
+----------------------------------------------------------------
+| node server.js -p 3000 -s -bl 127.0.0.1 10.0.0.1 --start 1 --index ./public/index.html
+----------------------------------------------------------------
+```
+You can also host images, doing this command:
+```
+node server.js --index /path/to/your/image.png
+```
