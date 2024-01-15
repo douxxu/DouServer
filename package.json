@@ -1,0 +1,18 @@
+{
+  "name": "DouServer",
+  "version": "1.0.3",
+  "description": "A simple Web server using express.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js -h"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "colors": "^1.4.0",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "os": "^0.1.3",
+    "yargs": "^17.0.1"
+  }
+}
