@@ -57,8 +57,12 @@ node server.js --index /path/to/your/image.png
 A log system was implemented to the server. All the `[SERVER]` messages in the console are server logs. 
 There is all the type of logs:
 
-1. Launching logs: ``[SERVER] Server is running at http://127.0.0.1:1111`` these logs are giving you the server URL
+1. Launching logs: ``[SERVER] Server is running at http://127.0.0.1:1111`` these logs are giving you the server URL.
 
 2. Requests logs: ``[SERVER] [DD/MM/YYYY, hh:mm:ss] - 127.0.0.1 - 1`` these logs provide you with the ip of the visitor to your website, as well as the number of times this ip has visited your website in this session. The log is formed as follows: `[SERVER] [date, time] - ip adrs. - number of visits by this ip`. The visitor's user agent can be found in the server.log file.
 
-3. Blacklist logs: ``[SERVER] [DD/MM/YYYY, hh:mm:ss] - BLACKLISTED IP 127.0.0.1 tried to connect.`` these logs only appear if you have blacklisted one or more ips with the -bl parameter, and one of these ips has tried to access your server. (127.0.0.1 is the blacklisted ip adrs.)
+3. Blacklist logs: ``[SERVER] [DD/MM/YYYY, hh:mm:ss] - BLACKLISTED IP 127.0.0.1 tried to connect.`` these logs only appear if you have blacklisted one or more ips with the `-bl` parameter, and one of these ips has tried to access your server. (127.0.0.1 is the blacklisted ip adrs.)
+
+4. Shield logs: ``[SERVER] [DD/MM/YYYY, hh:mm:ss] - 127.0.0.1 exceeded requests threshold (3).`` this log occurs when the `-s` (`--shield`) parameter has been activated, and an ip address has exceeded the limit of 3 requests every 5 seconds.
+
+5. Index file log: ``[SERVER] Using custom index file: /path/to/your/index/file.html`` this log confirms that the custom index file you configured with the `-index [path]` parameter has been used.
