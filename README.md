@@ -59,4 +59,6 @@ There is all the type of logs:
 
 1. Launching logs: ``[SERVER] Server is running at http://127.0.0.1:1111`` these logs are giving you the server URL
 
-2. Requests logs: ``[SERVER] [DD/MM/YYYY, hh\:mm:ss] - 127.0.0.1 - 1`` these logs provide you with the ip of the visitor to your website, as well as the number of times this ip has visited your website in this session. The log is formed as follows: `[SERVER] [date, time] - ip adrs. - number of visits by this ip`. The visitor's user agent can be found in the server.log file.
+2. Requests logs: ``[SERVER] [DD/MM/YYYY, hh:mm:ss] - 127.0.0.1 - 1`` these logs provide you with the ip of the visitor to your website, as well as the number of times this ip has visited your website in this session. The log is formed as follows: `[SERVER] [date, time] - ip adrs. - number of visits by this ip`. The visitor's user agent can be found in the server.log file.
+
+3. Blacklist logs: ``[SERVER] [DD/MM/YYYY, hh:mm:ss] - BLACKLISTED IP 127.0.0.1 tried to connect.`` these logs only appear if you have blacklisted one or more ips with the -bl parameter, and one of these ips has tried to access your server. (127.0.0.1 is the blacklisted ip adrs.)
