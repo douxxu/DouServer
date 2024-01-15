@@ -81,6 +81,8 @@ ______ _____ _   _ _____ ___________ _   _ ___________
 ```
 node server.js -i /path/to/your/image.png
 ```
+## 📃 Website pages (/)
+You can easily create website pages adding a new folder into the `public` folder and putting an index.extention file into this folder. The page will have the name of folder. Exemple: we can access to the image into the 
 
 ## [SERVER] messages
 
