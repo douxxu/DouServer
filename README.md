@@ -47,24 +47,39 @@ ______ _____ _   _ _____ ___________ _   _ ___________
 | |/ /\ \_/ / |_| /\__/ / |___| |\ \\ \_/ / |___| |\ \ 
 |___/  \___/ \___/\____/\____/\_| \_\___/\____/\_| \_|
 ----------------------------------------------------------------
-| Server created by Douxx.xyz                                  |
+| Server created by Douxx.xyz (https://github.com/douxxu/)     |
 ----------------------------------------------------------------
 𝗔𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗼𝗽𝘁𝗶𝗼𝗻𝘀:
 | -p, --port [port]: Specifies the server port
 | -s, --shield: Activates Shield mode to limit requests
 | -bl, --blacklist [ip1 ip2 ...] : List of IP addresses to be blocked
-| -start [minutes]: Automatically starts the server after a set time.
-| -index [path]: Specify HTML index file path
+| -st, --start [minutes]: Automatically starts the server after a set time.
+| -i, --index [path]: Specify HTML index file path
+| -r, --robots: Blocks robots if the option is present
 | -h: Shows this help message
 
 𝐄𝐱𝐚𝐦𝐩𝐥𝐞 𝐮𝐬𝐚𝐠𝐞:
 ----------------------------------------------------------------
-| node server.js -p 3000 -s -bl 127.0.0.1 10.0.0.1 --start 1 --index ./public/index.html
+| node server.js -p 3000 -s -bl 127.0.0.1 -st 1 -i ./public/index.html -r
 ----------------------------------------------------------------
+
 ```
-You can also host images, doing this command:
+**Options:**
+`-p [port]`/`--port [port]`: Specify the server port. Usage: `node server.js -p 8080`: Server will be hosted on http://127.0.0.1:8080.
+
+`-s`/`--shield`: If this option is enabled, the server will automatically blacklist all ip's exceeding the allowed request limit every 5 seconds. The default number of requests is 10. This can be changed with the line `const rlimit = 10;`. Usage: `node server.js -s`: server will activate shield mode.
+
+`-bl [ips]`/`--blacklist [ips]`: With this option, you can disable access to the server for given ips. Usage: `node server.js -bl 192.168.0.0 192.168.0.1 10.0.0.2`: Ips '192.168.0.0', '192.168.0.1' and '10.0.0.2' will be blacklisted.
+
+`-st [time]`/`--start [time]`: Will set a countdown before the server starts. Usage: `node server.js -st 1`: The server will start after 1 minute.
+
+`-i`/`--index`: Will set the default page (/) file to the given file. Usage: `node server.js -i /path/to/your/file.html`: The server default file will be `file.html`.
+
+`-r`/`--robots`: If this option is enabled, the server will remove access to bots. Usage: `node server.js -r`.
+
+*note: you can also host images, doing this command:*
 ```
-node server.js --index /path/to/your/image.png
+node server.js -i /path/to/your/image.png
 ```
 
 ## [SERVER] messages
