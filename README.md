@@ -14,6 +14,7 @@ To work properly, DouServer requires:
 - [Morgan](https://www.npmjs.com/package/morgan)
 - [Yargs](https://yargs.js.org/)
 - [Colors](https://www.npmjs.com/package/colors)
+
 *note: all these packages are on [npmjs.org](https://npmjs.com) and can be installed with the command `npm install xyz` (xyz is the package name)*
 
 ## 🖥 Installation
