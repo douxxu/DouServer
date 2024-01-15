@@ -2,7 +2,7 @@
 
 DouServer Webserver is a secure webserver who uses Express.js and commands line to work.
 
-## 🖥 Install DouServer
+## 🖥 Installation
 To install DouServer, follow these easy steps:
 1. Make sure that you have [node js](https://nodejs.org/en) and [npm](https://www.npmjs.com/package/npm) installed on your device
 2. open a terminal
@@ -16,3 +16,9 @@ npm install
 ```
 node server.js
 ```
+## ⚡️ Running DouServer
+You can run DouServer using the following command:
+```
+node server.js
+```
+This command will run a basic web server, the default port is 1111, you can access it from http:/localhost:1111.
