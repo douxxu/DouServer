@@ -25,7 +25,7 @@ To install DouServer, follow these easy steps:
 ```
 git clone https://github.com/douxxu/DouServer.git
 cd DouServer
-npm install
+npm install express morgan yargs colors
 ```
 4. DouServer is now installed, you can now run it with
 ```
