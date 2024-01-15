@@ -2,6 +2,20 @@
 
 DouServer Webserver is a secure webserver who uses Express.js and commands line to work.
 
+## 📀 Requirements
+To work properly, DouServer requires:
+
+**Bases:**
+- [node js](https://nodejs.org/en)
+- [npm](https://www.npmjs.com/package/npm)
+
+**Packages:**
+- [Express](https://expressjs.com/)
+- [Morgan](https://www.npmjs.com/package/morgan)
+- [Yargs](https://yargs.js.org/)
+- [Colors](https://www.npmjs.com/package/colors)
+*note: all these packages are on [npmjs.org](https://npmjs.com) and can be installed with the command `npm install xyz` (xyz is the package name)*
+
 ## 🖥 Installation
 To install DouServer, follow these easy steps:
 1. Make sure that you have [node js](https://nodejs.org/en) and [npm](https://www.npmjs.com/package/npm) installed on your device
