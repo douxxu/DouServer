@@ -82,7 +82,7 @@ ______ _____ _   _ _____ ___________ _   _ ___________
 node server.js -i /path/to/your/image.png
 ```
 ## 📃 Website pages (/)
-You can easily create website pages adding a new folder into the `public` folder and putting an index.extention file into this folder. The page will have the name of folder. Exemple: we can access to the image into the 
+You can easily create website pages adding a new folder into the `public` folder and putting an index.extention file into this folder. The page will have the name of folder. Exemple: we can access to the image into the [/public/image](https://github.com/douxxu/DouServer/tree/0397d4b1bf6ecacc82824fa72f299ee3aaf10ca1/public/image) going to http://127.0.0.1:port/image. Same for the html and txt folder.
 
 ## [SERVER] messages
 
