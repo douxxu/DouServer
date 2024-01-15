@@ -21,4 +21,7 @@ You can run DouServer using the following command:
 ```
 node server.js
 ```
-This command will run a basic web server, the default port is 1111, you can access it from http:/localhost:1111.
+This command will run a basic web server, the default port is 1111, and the default index file is the ./public/index.html file, you can access it from http://localhost:1111.
+
+You can use the differents arguments for editing the web server:
+```
