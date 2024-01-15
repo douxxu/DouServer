@@ -12,3 +12,7 @@ git clone https://github.com/douxxu/DouServer.git
 cd DouServer
 npm install
 ```
+4. DouServer is now installed, you can now run it with
+```
+node server.js
+```
