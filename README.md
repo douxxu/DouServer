@@ -66,3 +66,4 @@ There is all the type of logs:
 4. Shield logs: ``[SERVER] [DD/MM/YYYY, hh:mm:ss] - 127.0.0.1 exceeded requests threshold (3).`` this log occurs when the `-s` (`--shield`) parameter has been activated, and an ip address has exceeded the limit of 3 requests every 5 seconds.
 
 5. Index file log: ``[SERVER] Using custom index file: /path/to/your/index/file.html`` this log confirms that the custom index file you configured with the `-index [path]` parameter has been used.
+
