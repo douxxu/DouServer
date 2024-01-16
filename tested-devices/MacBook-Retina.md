@@ -23,3 +23,6 @@ None / battery
 - [ ] Overclocked
 - [ ] Ethernet
 - [x] WiFi 6 
+
+## Personnal opinion
+This macbook is getting old, but it's still perfectly functional and I was able to install node js very quickly without any problems. DouServer was installed within 10 seconds, and all commands work perfectly. Although the [Raspberry Pi 5](https://github.com/douxxu/DouServer/blob/689679cb07a1ece7c5b66aeb059d5a674757b147/tested-devices/rpi5.md) has almost better specs, the macbook manages to compete with it. I did a dos on the server, and the ping didn't change from usual: around 500 ms. If I activate the shield option, the macbook handles http flood attacks very well, quickly blacklisting the attacker. The logging system is fully functional.
