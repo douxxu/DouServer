@@ -26,15 +26,17 @@ To install DouServer, follow these easy steps:
 git clone https://github.com/douxxu/DouServer.git
 cd DouServer
 npm install express morgan yargs colors
+chmod +x cmd.js
+npm link
 ```
 4. DouServer is now installed, you can now run it with
 ```
-node server.js
+douserver
 ```
 ## ⚡️ Running DouServer
 You can run DouServer using the following command:
 ```
-node server.js
+douserver
 ```
 This command will run a basic web server, the default port is 1111, and the default index file is the ./public/index.html file, you can access it from http://localhost:1111.
 
