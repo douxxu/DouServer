@@ -102,6 +102,19 @@ There is all the type of logs:
 5. Index file log: ``[SERVER] Using custom index file: /path/to/your/index/file.html`` this log confirms that the custom index file you configured with the `-index [path]` parameter has been used.
 
 
+## 💾 Tested devices
+
+[x] Raspberry pi 5 (Debian 12): /tested-devices/rpi5.md
+
+[ ] Raspberry pi 4
+
+[ ] MacOs
+
+[ ] Windows 10
+
+[ ] Windows 11
+
+
 ## LICENSE
 
 No license guys 😌
