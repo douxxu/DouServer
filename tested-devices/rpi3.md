@@ -19,7 +19,7 @@ Broadcom BCM2837B0, Cortex-A53 (ARMv8) 64-bit SoC @ 1.4GHz
 5V/2.5A micro-usb
 ```
 
-## Parameters
+## Parameters
 **OS:** [Pi Os with desktop](https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-64-bit)
 - [ ] Overclocked
 - [ ] Ethernet
