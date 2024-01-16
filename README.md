@@ -31,12 +31,12 @@ npm link
 ```
 4. DouServer is now installed, you can now run it with
 ```
-douserver
+dserver
 ```
 ## ⚡️ Running DouServer
 You can run DouServer using the following command:
 ```
-douserver
+dserver
 ```
 This command will run a basic web server, the default port is 1111, and the default index file is the ./public/index.html file, you can access it from http://localhost:1111.
 
@@ -62,26 +62,26 @@ ______ _____ _   _ _____ ___________ _   _ ___________
 
 𝐄𝐱𝐚𝐦𝐩𝐥𝐞 𝐮𝐬𝐚𝐠𝐞:
 ----------------------------------------------------------------
-| node server.js -p 3000 -s -bl 127.0.0.1 -st 1 -i ./public/index.html -r
+| dserver -p 3000 -s -bl 127.0.0.1 -st 1 -i ./public/index.html -r
 ----------------------------------------------------------------
 
 ```
 **Options:**
-`-p [port]`/`--port [port]`: Specify the server port. Usage: `node server.js -p 8080`: Server will be hosted on http://127.0.0.1:8080.
+`-p [port]`/`--port [port]`: Specify the server port. Usage: `dserver -p 8080`: Server will be hosted on http://127.0.0.1:8080.
 
-`-s`/`--shield`: If this option is enabled, the server will automatically blacklist all ip's exceeding the allowed request limit every 5 seconds. The default number of requests is 10. This can be changed with the line `const rlimit = 10;`. Usage: `node server.js -s`: server will activate shield mode.
+`-s`/`--shield`: If this option is enabled, the server will automatically blacklist all ip's exceeding the allowed request limit every 5 seconds. The default number of requests is 10. This can be changed with the line `const rlimit = 10;`. Usage: `dserver -s`: server will activate shield mode.
 
-`-bl [ips]`/`--blacklist [ips]`: With this option, you can disable access to the server for given ips. Usage: `node server.js -bl 192.168.0.0 192.168.0.1 10.0.0.2`: Ips '192.168.0.0', '192.168.0.1' and '10.0.0.2' will be blacklisted.
+`-bl [ips]`/`--blacklist [ips]`: With this option, you can disable access to the server for given ips. Usage: `dserver -bl 192.168.0.0 192.168.0.1 10.0.0.2`: Ips '192.168.0.0', '192.168.0.1' and '10.0.0.2' will be blacklisted.
 
-`-st [time]`/`--start [time]`: Will set a countdown before the server starts. Usage: `node server.js -st 1`: The server will start after 1 minute.
+`-st [time]`/`--start [time]`: Will set a countdown before the server starts. Usage: `dserver -st 1`: The server will start after 1 minute.
 
-`-i`/`--index`: Will set the default page (/) file to the given file. Usage: `node server.js -i /path/to/your/file.html`: The server default file will be `file.html`.
+`-i`/`--index`: Will set the default page (/) file to the given file. Usage: `dserver -i /path/to/your/file.html`: The server default file will be `file.html`.
 
-`-r`/`--robots`: If this option is enabled, the server will remove access to bots. Usage: `node server.js -r`.
+`-r`/`--robots`: If this option is enabled, the server will remove access to bots. Usage: `dserver -r`.
 
 *note: you can also host images, doing this command:*
 ```
-node server.js -i /path/to/your/image.png
+dserver -i /path/to/your/image.png
 ```
 ## 📃 Website pages (/)
 You can easily create website pages adding a new folder into the `public` folder and putting an index.extention file into this folder. The page will have the name of folder. Exemple: we can access to the image into the [/public/image](https://github.com/douxxu/DouServer/tree/0397d4b1bf6ecacc82824fa72f299ee3aaf10ca1/public/image) going to http://127.0.0.1:port/image. Same for the html and txt folder.
