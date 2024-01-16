@@ -190,7 +190,7 @@ if (argv.h) {
   console.log("| -h: Shows this help message\n".yellow);
   console.log("𝐄𝐱𝐚𝐦𝐩𝐥𝐞 𝐮𝐬𝐚𝐠𝐞:".gray);
   console.log('----------------------------------------------------------------'.gray);
-  console.log("| node server.js -p 3000 -s -bl 127.0.0.1 -st 1 -i ./public/index.html -r".yellow);
+  console.log("| dserver -p 3000 -s -bl 127.0.0.1 -st 1 -i ./public/index.html -r".yellow);
   console.log('----------------------------------------------------------------'.gray);
   process.exit();
 } else {
@@ -199,8 +199,8 @@ if (argv.h) {
     console.log(`[SERVER] Using custom index file: ${cifp}`.green);
   }
 
-  if (argv.start) {
-    const countdownMinutes = argv.start;
+  if (argv.st) {
+    const countdownMinutes = argv.st;
     console.log(`[START] Server will start in ${countdownMinutes} minutes. Countdown begins...`.yellow);
 
     setTimeout(() => {
@@ -228,7 +228,7 @@ function launch() {
     console.log('----------------------------------------------------------------'.rainbow);
     console.log(`[SERVER] Server is running at http://${sip}:${PORT}`.green);
     console.error(`Use ctrl + c to stop the server`.yellow);
-    console.error(`Use 'node server.js -h' to get help`.yellow);
+    console.error(`Use 'dserver -h' to get help`.yellow);
   });
 }
 
