@@ -1,4 +1,4 @@
-name: DouServer Release
+name: DouServer
 
 on:
   release:
