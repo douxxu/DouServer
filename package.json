@@ -4,7 +4,7 @@
   "description": "A simple Web server using express.js",
   "main": "server.js",
   "bin": {
-    "douserver": "./server.js"
+    "douserver": "./cmd.js"
   },
   "scripts": {
     "start": "node server.js -h"
