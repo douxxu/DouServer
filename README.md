@@ -104,15 +104,11 @@ There is all the type of logs:
 
 ## 💾 Tested devices
 
-[x] Raspberry pi 5 (Debian 12): /tested-devices/rpi5.md
-
-[ ] Raspberry pi 4
-
-[ ] MacOs
-
-[ ] Windows 10
-
-[ ] Windows 11
+- [x] Raspberry pi 5 (Debian 12): /tested-devices/rpi5.md
+- [ ] Raspberry pi 4
+- [ ] MacOs
+- [ ] Windows 10
+- [ ] Windows 11
 
 
 ## LICENSE
