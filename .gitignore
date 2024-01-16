@@ -1,0 +1,5 @@
+# Ignorer le fichier .npmrc
+.npmrc
+
+# Ignorer le dossier .github
+.github/
