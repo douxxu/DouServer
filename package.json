@@ -13,7 +13,7 @@
     "type": "git",
     "url": "https://github.com/douxxu/DouServer.git"
   },
-  "license": null,
+  "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
     "morgan": "^1.10.0",
