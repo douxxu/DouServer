@@ -149,7 +149,7 @@ const argv = yargs
     describe: 'List of IP addresses to block',
     type: 'array'
   })
-  .option('st', {
+  .option('t', {
     alias: 'start',
     describe: 'Start the server automatically after a specified time',
     type: 'number'
@@ -184,7 +184,7 @@ if (argv.h) {
   console.log("| -p, --port [port]: Specifies the server port".yellow);
   console.log("| -s, --shield: Activates Shield mode to limit requests".yellow);
   console.log("| -bl, --blacklist [ip1 ip2 ...] : List of IP addresses to be blocked".yellow);
-  console.log("| -st, --start [minutes]: Automatically starts the server after a set time.".yellow);
+  console.log("| -t, --start [minutes]: Automatically starts the server after a set time.".yellow);
   console.log("| -i, --index [path]: Specify HTML index file path".yellow);
   console.log("| -r, --robots: Blocks robots if the option is present".yellow);
   console.log("| -h: Shows this help message\n".yellow);
@@ -199,8 +199,8 @@ if (argv.h) {
     console.log(`[SERVER] Using custom index file: ${cifp}`.green);
   }
 
-  if (argv.st) {
-    const countdownMinutes = argv.st;
+  if (argv.t) {
+    const countdownMinutes = argv.t;
     console.log(`[START] Server will start in ${countdownMinutes} minutes. Countdown begins...`.yellow);
 
     setTimeout(() => {
