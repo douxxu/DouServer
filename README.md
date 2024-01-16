@@ -55,14 +55,14 @@ ______ _____ _   _ _____ ___________ _   _ ___________
 | -p, --port [port]: Specifies the server port
 | -s, --shield: Activates Shield mode to limit requests
 | -bl, --blacklist [ip1 ip2 ...] : List of IP addresses to be blocked
-| -st, --start [minutes]: Automatically starts the server after a set time.
+| -t, --start [minutes]: Automatically starts the server after a set time.
 | -i, --index [path]: Specify HTML index file path
 | -r, --robots: Blocks robots if the option is present
 | -h: Shows this help message
 
 𝐄𝐱𝐚𝐦𝐩𝐥𝐞 𝐮𝐬𝐚𝐠𝐞:
 ----------------------------------------------------------------
-| dserver -p 3000 -s -bl 127.0.0.1 -st 1 -i ./public/index.html -r
+| dserver -p 3000 -s -bl 127.0.0.1 -t 1 -i ./public/index.html -r
 ----------------------------------------------------------------
 
 ```
@@ -73,7 +73,7 @@ ______ _____ _   _ _____ ___________ _   _ ___________
 
 `-bl [ips]`/`--blacklist [ips]`: With this option, you can disable access to the server for given ips. Usage: `dserver -bl 192.168.0.0 192.168.0.1 10.0.0.2`: Ips '192.168.0.0', '192.168.0.1' and '10.0.0.2' will be blacklisted.
 
-`-st [time]`/`--start [time]`: Will set a countdown before the server starts. Usage: `dserver -st 1`: The server will start after 1 minute.
+`-t [time]`/`--start [time]`: Will set a countdown before the server starts. Usage: `dserver --start 1`: The server will start after 1 minute.
 
 `-i`/`--index`: Will set the default page (/) file to the given file. Usage: `dserver -i /path/to/your/file.html`: The server default file will be `file.html`.
 
