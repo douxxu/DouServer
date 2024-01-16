@@ -1,10 +1,10 @@
 {
   "name": "DouServer",
-  "version": "1.1.0",
+  "version": "1.3.0",
   "description": "A simple Web server using express.js",
-  "main": "server.js",
+  "main": "DouServer.js",
   "bin": {
-    "douserver": "./cmd.js"
+    "dserver": "./cmd.js"
   },
   "scripts": {
     "start": "node server.js -h"
