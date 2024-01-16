@@ -21,13 +21,13 @@ Broadcom BCM2712
 1x PCIe 2.0x1
 ```
 
-**Alinentation:**
+**Alimentation:**
 ```
 5V/5A USB-C
 ```
 
 ## Parameters
-**OS:** [Pi Os with desktop](https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-64-bit)
+**OS:** [Pi Os with desktop (bookworm)](https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-64-bit)
 - [ ] Overcloked
 - [ ] Ethernet
 - [x] WiFi 6
