@@ -30,3 +30,6 @@ Broadcom BCM2712
 - [ ] Overcloked
 - [ ] Ethernet
 - [x] WiFi 6
+
+## Personal opinion
+The raspberry pi 5 easily runs DouServer without a hitch, the setup took about 10 seconds and the server launches immediately after executing the `dserver -s` command. I ran http flood on it and the server held firm, blacklisting the ip quickly. The cpu temperature was around 55 degrees Celsius with the help of the box with built-in fan.
