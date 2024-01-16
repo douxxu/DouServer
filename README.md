@@ -107,10 +107,10 @@ There is all the type of logs:
 ### Devices
 - [x] Raspberry pi 5 (Debian 12): [/tested-devices/rpi5.md](https://github.com/douxxu/DouServer/blob/fec62a19e5a09d088d7d2f7615541037d9eb442e/tested-devices/rpi5.md)
 - [x] Raspberry pi 3 (Debian 11): [/tested-devices/rpi3.md](https://github.com/douxxu/DouServer/blob/2529df4f10863894975fb9bdb8022a12dbfe420a/tested-devices/rpi3.md)
-- [] MacBook Retina 
+- [x] MacBook Retina (Unix): [/tested-devices/MacBook-Retina.md](https://github.com/douxxu/DouServer/blob/18a7752371c72a1ad1359da2460744ccff95897e/tested-devices/MacBook-Retina.md)
 
 ### Os
-- [ ] MacOs
+- [x] MacOs [MacOs Big Sur 11.5.2]: [/tested-devices/MacBook-Retina.md](https://github.com/douxxu/DouServer/blob/18a7752371c72a1ad1359da2460744ccff95897e/tested-devices/MacBook-Retina.md)
 - [ ] Windows 10
 - [ ] Windows 11
 
