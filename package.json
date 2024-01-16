@@ -3,6 +3,9 @@
   "version": "1.1.0",
   "description": "A simple Web server using express.js",
   "main": "server.js",
+  "bin": {
+    "douserver": "./server.js"
+  },
   "scripts": {
     "start": "node server.js -h"
   },
