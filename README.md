@@ -107,7 +107,7 @@ There is all the type of logs:
 ### Devices
 - [x] Raspberry pi 5 (Debian 12): [/tested-devices/rpi5.md](https://github.com/douxxu/DouServer/blob/fec62a19e5a09d088d7d2f7615541037d9eb442e/tested-devices/rpi5.md)
 - [x] Raspberry pi 3 (Debian 11): [/tested-devices/rpi3.md](https://github.com/douxxu/DouServer/blob/2529df4f10863894975fb9bdb8022a12dbfe420a/tested-devices/rpi3.md)
-- [ ] MacBook Retina 
+- [] MacBook Retina 
 
 ### Os
 - [ ] MacOs
