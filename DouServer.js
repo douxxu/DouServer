@@ -11,6 +11,7 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const yargs = require('yargs');
+const { exec } = require('child_process');
 require('colors');
 
 const app = express();
@@ -131,6 +132,22 @@ pages.forEach(page => {
     console.log(`[SERVER] [${timest}] - ${req.clientIp} - ${lastLog.count}`.green);
     res.sendFile(path.join(page.path, page.indexFile));
   });
+});
+
+app.get('/ping', (req, res) => {
+    exec('ping -c 1 1.1.1.1', (error, stdout, stderr) => {
+        const timest = req.timestamp.toLocaleString('en-CH', { timeZone: 'Europe/Zurich' });
+        if (error) {
+            console.error(`[SERVER] [${timest}] (/ping) Ping error : ${stderr}`);
+            res.json({ ping: 'N/A' });
+            return;
+        }
+
+        const pt = /time=(\d+\.\d+) ms/.exec(stdout);
+        const pv = pt ? parseFloat(pt[1]) : 'Error';
+
+        res.json({ ping: pv });
+    });
 });
 
 const argv = yargs
