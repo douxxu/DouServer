@@ -190,7 +190,7 @@ const argv = yargs
     type: 'boolean'
   })
   .option('v', {
-    alias: 'version',
+    alias: 'ver',
     describe: 'Display DouServer version',
     type: 'boolean'
   })
