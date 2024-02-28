@@ -19,9 +19,7 @@ const app = express();
 const logs = fs.createWriteStream(path.join(__dirname, 'server.log'), { flags: 'a' });
 app.use(morgan(':date[en-CH] - :remote-addr - :method :url :status :response-time ms', { stream: logs }));
 
-const pjsonpath = path.resolve(__dirname, 'package.json');
-const pjson = JSON.parse(fs.readFileSync(pjsonpath, 'utf8'));
-const version = pjson.version;
+
 
 
 let cifp;
@@ -191,10 +189,6 @@ const argv = yargs
   })
   .argv;
 
-  if (argv.v) {
-    console.log(`${version}`);
-    process.exit();
-  }
 
 if (argv.h) {
   console.log('______ _____ _   _ _____ ___________ _   _ ___________ '.cyan);
