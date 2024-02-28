@@ -189,11 +189,6 @@ const argv = yargs
     describe: 'don\'t allow robots to reach the website',
     type: 'boolean'
   })
-  .option('v', {
-    alias: 'ver',
-    describe: 'Display DouServer version',
-    type: 'boolean'
-  })
   .argv;
 
   if (argv.v) {
