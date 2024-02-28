@@ -1,6 +1,6 @@
 {
   "name": "DouServer",
-  "version": "1.3.0",
+  "version": "1.4.3",
   "description": "A simple Web server using express.js",
   "main": "DouServer.js",
   "bin": {
