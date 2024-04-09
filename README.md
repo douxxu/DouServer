@@ -42,7 +42,7 @@ You can run DouServer using the following command:
 ```
 dserver
 ```
-This command will run a basic web server, the default port is 1111, and the default index file is the [/public/index.html](https://github.com/douxxu/DouServer/blob/815816abd6987b7ebd3fd675a1bea864fe4d14b7/public/index.html) file, you can access it from http://localhost:1111.
+This command will run a basic web server, the default port is the http port (80), and the default index file is the [/public/index.html](https://github.com/douxxu/DouServer/blob/815816abd6987b7ebd3fd675a1bea864fe4d14b7/public/index.html) file, you can access it from http://localhost:80.
 
 You can use the differents arguments for editing the web server:
 ```
