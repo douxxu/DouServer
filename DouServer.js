@@ -232,7 +232,7 @@ if (argv.h) {
 }
 
 function launch() {
-  const PORT = argv.p || 1111;
+  const PORT = argv.p || 80;
   const host = '0.0.0.0';
 
   app.listen(PORT, host, () => {
