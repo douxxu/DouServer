@@ -1,0 +1,2 @@
+Welcome to DouServer
+This is the DouServer default page. Customize it as you like!
