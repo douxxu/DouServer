@@ -1,13 +1,13 @@
 {
-  "name": "DouServer",
-  "version": "1.4.3",
+  "name": "douserver",
+  "version": "1.4.6",
   "description": "A simple Web server using express.js",
-  "main": "DouServer.js",
+  "main": "src/DouServer.js",
   "bin": {
-    "dserver": "./cmd.js"
+    "dserver": "./src/cmd.js"
   },
   "scripts": {
-    "start": "node server.js -h"
+    "start": "node src/cmd.js -h"
   },
   "repository": {
     "type": "git",
@@ -15,9 +15,17 @@
   },
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
-    "morgan": "^1.10.0",
-    "colors": "^1.4.0",
-    "yargs": "^17.0.1"
-  }
+    "express": "*",
+    "morgan": "*",
+    "colors": "*",
+    "yargs": "*"
+  },
+  "keywords": [
+    "express",
+    "server",
+    "customizable",
+    "webserver",
+    "hosting",
+    "opensource"
+  ]
 }
