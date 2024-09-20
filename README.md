@@ -127,5 +127,4 @@ There is all the type of logs:
 
 ## LICENSE
 
-No license guys 😌
-Do what do you want with this project, but please credit me
+MIT license, check the [LICENSE](LICENSE) file
